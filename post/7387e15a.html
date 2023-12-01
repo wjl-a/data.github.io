@@ -1,0 +1,457 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>1.python基础1 | 醉卿枫の博客</title><meta name="author" content="醉卿枫"><meta name="copyright" content="醉卿枫"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="输入print()函数输出几种形式不带引号 让计算机读懂括号⾥的内容，打印最终的结果  12print(1+1)输出：2  单引号 计算机⽆须理解，原样复述引号中的内容  1print(&#x27;秋水共长天一色&#x27;)  双引号 作⽤和单引号⼀样；当打印内容中有单引号时，可以使⽤双引号  12print(&quot;Let&#x27;s go&quot;) print(&#x27;Let\">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1.python基础1">
+<meta property="og:url" content="https://github.com/wjl-a/data.github.io/post/7387e15a.html">
+<meta property="og:site_name" content="醉卿枫の博客">
+<meta property="og:description" content="输入print()函数输出几种形式不带引号 让计算机读懂括号⾥的内容，打印最终的结果  12print(1+1)输出：2  单引号 计算机⽆须理解，原样复述引号中的内容  1print(&#x27;秋水共长天一色&#x27;)  双引号 作⽤和单引号⼀样；当打印内容中有单引号时，可以使⽤双引号  12print(&quot;Let&#x27;s go&quot;) print(&#x27;Let\">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://bu.dusays.com/2022/05/29/62939662553c9.png">
+<meta property="article:published_time" content="2022-04-03T13:01:00.000Z">
+<meta property="article:modified_time" content="2023-12-01T13:27:28.517Z">
+<meta property="article:author" content="醉卿枫">
+<meta property="article:tag" content="python&#x2F;python语法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://bu.dusays.com/2022/05/29/62939662553c9.png"><link rel="shortcut icon" href="/data.github.io/img/favicon.png"><link rel="canonical" href="https://github.com/wjl-a/data.github.io/post/7387e15a.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/data.github.io/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/data.github.io/',
+  algolia: undefined,
+  localSearch: {"path":"/data.github.io/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '1.python基础1',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-12-01 21:27:28'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.0.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (true) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/12.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/data.github.io/archives/"><div class="headline">文章</div><div class="length-num">28</div></a><a href="/data.github.io/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/data.github.io/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/data.github.io/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/data.github.io/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/data.github.io/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/data.github.io/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/data.github.io/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/data.github.io/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/data.github.io/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://bu.dusays.com/2022/05/29/62939662553c9.png')"><nav id="nav"><span id="blog-info"><a href="/data.github.io/" title="醉卿枫の博客"><span class="site-name">醉卿枫の博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/data.github.io/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/data.github.io/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/data.github.io/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/data.github.io/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/data.github.io/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/data.github.io/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/data.github.io/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">1.python基础1</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-04-03T13:01:00.000Z" title="发表于 2022-04-03 21:01:00">2022-04-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-12-01T13:27:28.517Z" title="更新于 2023-12-01 21:27:28">2023-12-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/data.github.io/categories/python%E5%9F%BA%E7%A1%80/">python基础</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="1.python基础1"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="输入print-函数"><a href="#输入print-函数" class="headerlink" title="输入print()函数"></a>输入print()函数</h1><h2 id="输出几种形式"><a href="#输出几种形式" class="headerlink" title="输出几种形式"></a>输出几种形式</h2><h3 id="不带引号"><a href="#不带引号" class="headerlink" title="不带引号"></a>不带引号</h3><ul>
+<li>让计算机读懂括号⾥的内容，打印最终的结果</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="number">1</span>+<span class="number">1</span>)</span><br><span class="line">输出：<span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="单引号"><a href="#单引号" class="headerlink" title="单引号"></a>单引号</h3><ul>
+<li>计算机⽆须理解，原样复述引号中的内容</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;秋水共长天一色&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="双引号"><a href="#双引号" class="headerlink" title="双引号"></a>双引号</h3><ul>
+<li>作⽤和单引号⼀样；当打印内容中有单引号时，可以使⽤双引号</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Let&#x27;s go&quot;</span>) </span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Let\&#x27;s go&#x27;</span>) <span class="comment">#也可以使用转义字符+单引号(\&#x27;)来实现单引号</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="三引号"><a href="#三引号" class="headerlink" title="三引号"></a>三引号</h3><ul>
+<li>带三引号，实现换⾏</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;&#x27;&#x27;python </span></span><br><span class="line"><span class="string">我的世界&#x27;&#x27;&#x27;</span>) </span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;python小课\n最好的python课程&quot;</span>)<span class="comment">#采用转义字符&quot;\n&quot;也可以换行</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h3><table>
+<thead>
+<tr>
+<th>转义字符</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\a</td>
+<td>响铃</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>退格，将当前位置前移一项</td>
+</tr>
+<tr>
+<td>\f</td>
+<td>换页，将当前位置移到下页开头</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>换行</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>回车，将当前位danyihao置移到本行开头</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>水平制表</td>
+</tr>
+<tr>
+<td>\v</td>
+<td>垂直制表</td>
+</tr>
+<tr>
+<td>\\</td>
+<td>代表一个斜线字符“\”</td>
+</tr>
+<tr>
+<td>\0</td>
+<td>空字符</td>
+</tr>
+<tr>
+<td>\ddd</td>
+<td>1到3位八进制所代表的任意字符</td>
+</tr>
+<tr>
+<td>\xhh</td>
+<td>1到2位十六进制所代表的任意字符</td>
+</tr>
+</tbody></table>
+<h2 id="print-不换行"><a href="#print-不换行" class="headerlink" title="print()不换行"></a>print()不换行</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;hello&#x27;</span>,end=<span class="string">&#x27;!&#x27;</span>)<span class="comment">#end实现不换行</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;world&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="print-完整参数"><a href="#print-完整参数" class="headerlink" title="print()完整参数"></a>print()完整参数</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(*objects, sep = <span class="string">&#x27; &#x27;</span>, end = <span class="string">&#x27;\n&#x27;</span>, file = sys.stdout, flush = <span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;金枪鱼&#x27;</span>, <span class="string">&#x27;三文鱼&#x27;</span>, <span class="string">&#x27;鲷鱼&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;金枪鱼&#x27;</span>, <span class="string">&#x27;三文鱼&#x27;</span>, <span class="string">&#x27;鲷鱼&#x27;</span>, sep = <span class="string">&#x27;+&#x27;</span>)</span><br><span class="line"><span class="comment"># sep控制多个值之间的分隔符，默认是空格</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;金枪鱼&#x27;</span>, <span class="string">&#x27;三文鱼&#x27;</span>, <span class="string">&#x27;鲷鱼&#x27;</span>, sep = <span class="string">&#x27;+&#x27;</span>, end = <span class="string">&#x27;=?&#x27;</span>)</span><br><span class="line"><span class="comment"># end控制打印结果的结尾，默认是换行)</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="变量和赋值"><a href="#变量和赋值" class="headerlink" title="变量和赋值"></a>变量和赋值</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">变量名=<span class="string">&#x27;内容&#x27;</span></span><br><span class="line">name=<span class="string">&#x27;小千&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="命名规则"><a href="#命名规则" class="headerlink" title="命名规则"></a>命名规则</h2><ol>
+<li>只能是一个词</li>
+<li>只能包含数字、数字、下划线</li>
+<li>不能以数字开头</li>
+</ol>
+<h4 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h4><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202201041248307.png" alt="image-20210808213821074"></p>
+<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><ul>
+<li>常见：字符串，整数型，浮点数，列表，字典，布尔值，元组</li>
+</ul>
+<ol>
+<li><p>字符串str:⽤括号括起来的⽂本（如：’python’、’123’、’程序’）</p>
+</li>
+<li><p>整数int：不带⼩数点的数字（如：-1、1、0、520、1314） </p>
+</li>
+<li><p>浮点数float：带⼩数点的数字，运算结果存在误差（如：-0.15、3.1415、1.0) </p>
+</li>
+<li><p>列表list:标识是中括号[]</p>
+</li>
+<li><p>元组tuple:与列表类似，不能修改，标识（）</p>
+<ul>
+<li>元组和列表一样，可以通过索引来提取当中的某个元素</li>
+</ul>
+</li>
+<li><p>字典dict:标识大括号{}</p>
+</li>
+<li><p>布尔值bool：表示真假的数据类型，只有True和False</p>
+</li>
+</ol>
+<h2 id="四则运算"><a href="#四则运算" class="headerlink" title="四则运算"></a>四则运算</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/202201041248095.png" alt="image-20210808214239056"></p>
+<h2 id="数据的拼接"><a href="#数据的拼接" class="headerlink" title="数据的拼接"></a>数据的拼接</h2><h3 id="用“-”号将数据进行拼接"><a href="#用“-”号将数据进行拼接" class="headerlink" title="用“+”号将数据进行拼接"></a>用“+”号将数据进行拼接</h3><ul>
+<li>目的：数据整合</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hero = <span class="string">&#x27;我&#x27;</span></span><br><span class="line">organization = <span class="string">&#x27;风变编程&#x27;</span></span><br><span class="line">identity = <span class="string">&#x27;学员&#x27;</span></span><br><span class="line">action = <span class="string">&#x27;是&#x27;</span></span><br><span class="line">ID = <span class="string">&#x27;007&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(hero+action+organization+identity+ID)</span><br></pre></td></tr></table></figure>
+
+<h3 id="格式符"><a href="#格式符" class="headerlink" title="格式符%"></a>格式符%</h3><table>
+<thead>
+<tr>
+<th>格式符+类型码</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>%s</td>
+<td>字符串显示</td>
+</tr>
+<tr>
+<td>%f</td>
+<td>浮点数显示</td>
+</tr>
+<tr>
+<td>%d</td>
+<td>整数显示</td>
+</tr>
+</tbody></table>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lucky = <span class="number">8</span></span><br><span class="line">n=<span class="string">&#x27;我的&#x27;</span></span><br><span class="line">year=<span class="number">21</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;我的幸运数字是%d&#x27;</span> % <span class="number">8</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;我的幸运数字是%s&#x27;</span> % <span class="string">&#x27;小龙女的生日816&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;%s年龄是%s&#x27;</span> % (n,year))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;%s年龄是%d&#x27;</span> % (n,year))</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>%<code>后面的类型码用什么，取决于你希望这个</code>%<code>占住的这个位置的数据以什么类型展示出来，如果你希望它以字符串形式展示，那就写</code>%s<code>，如果你希望它以整数形式展示，那就写</code>%d</li>
+</ul>
+<h3 id="format函数"><a href="#format函数" class="headerlink" title="format函数"></a>format函数</h3><p>format()函数用来占位的是大括号{}，不用区分类型码（%+类型码）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">player_life=<span class="number">742</span></span><br><span class="line">player_attack=<span class="number">30</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;【玩家】\n血量：&#123;&#125;\n攻击：&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(player_life,player_attack))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">name1 = <span class="string">&#x27;Python&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;I am learning %s&#x27;</span>% name1)  <span class="comment"># 注：当只跟一个数据时，%后可不加括号，format()一定要有。</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># format()格式化函数：str.format()</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\n&#123;&#125;&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="string">&#x27;数字：&#x27;</span>,<span class="number">0</span>))  <span class="comment"># 优势1：不用担心用错类型码。</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;&#123;&#125;，&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="number">0</span>,<span class="number">1</span>))  <span class="comment"># 不设置指定位置时，默认按顺序对应。</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;&#123;1&#125;，&#123;0&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="number">0</span>,<span class="number">1</span>))  <span class="comment"># 优势2：当设置指定位置时，按指定的对应。</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;&#123;0&#125;，&#123;1&#125;，&#123;0&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="number">0</span>,<span class="number">1</span>))  <span class="comment"># 优势3：可多次调用format后的数据。</span></span><br><span class="line"></span><br><span class="line">name2 =  <span class="string">&#x27;Python基础语法&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;我正在学&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(name2))  <span class="comment"># format()函数也接受通过参数传入数据。</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="浮点数保留小数"><a href="#浮点数保留小数" class="headerlink" title="浮点数保留小数"></a>浮点数保留小数</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a=<span class="number">1.2334</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">format</span>(a, <span class="string">&#x27;.6f&#x27;</span>))<span class="comment">#利用format函数达到保留6位小数的目的</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="数据类型查询type-函数"><a href="#数据类型查询type-函数" class="headerlink" title="数据类型查询type()函数"></a>数据类型查询type()函数</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">who = <span class="string">&#x27;我的&#x27;</span></span><br><span class="line">print(type(who))</span><br></pre></td></tr></table></figure>
+
+<h2 id="数据转换"><a href="#数据转换" class="headerlink" title="数据转换"></a>数据转换</h2><ol>
+<li>str():将其他类型转换成字符串</li>
+<li>int():将其他数据类型转换成整数</li>
+<li>float():将其他数据类型转换成浮点数</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">magic = <span class="string">&#x27;水仙花数&#x27;</span></span><br><span class="line">action = <span class="string">&#x27;是&#x27;</span></span><br><span class="line">unit = <span class="string">&#x27;个&#x27;</span></span><br><span class="line">expression = <span class="string">&#x27;1x1x1+5x5x5+3x3x3&#x27;</span></span><br><span class="line">number = <span class="number">153</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span>(number)+<span class="string">&#x27;=&#x27;</span>+<span class="built_in">str</span>(expression)+action+unit+magic)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>文字类和小数类字符串无法转换成整数</li>
+<li>文字类字符串无法转换成浮点数</li>
+</ul>
+<h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_51769031/article/details/127322960?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522167889045316782427417113%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=167889045316782427417113&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~baidu_landing_v2~default-4-127322960-null-null.142%5Ev73%5Econtrol_1,201%5Ev4%5Eadd_ask,239%5Ev2%5Einsert_chatgpt&utm_term=python%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C%E5%A4%A7%E5%85%A8&spm=1018.2226.3001.4187">字符串的基本操作</a></p>
+<ol>
+<li>[[4、python模块#split():分开字符串|分开字符串]]</li>
+<li>[[4、python模块#join():合并字符串|合并字符串]]</li>
+</ol>
+<h2 id="字符串访问"><a href="#字符串访问" class="headerlink" title="字符串访问"></a>字符串访问</h2><p>正向递增序号和反向递减序号：正向访问用正数、从后往前访问用负数</p>
+<p><strong>索引访问</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">s=<span class="string">&#x27;abc defg hijk&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(s[<span class="number">0</span>])</span><br><span class="line"><span class="built_in">print</span>(s[<span class="number">12</span>])<span class="comment">#k</span></span><br><span class="line"><span class="built_in">print</span>(s[-<span class="number">1</span>])<span class="comment">#k</span></span><br><span class="line">img_name=<span class="string">&#x27;abcdf.jpg&#x27;</span></span><br><span class="line">img_name[<span class="number">0</span>:-<span class="number">4</span>]<span class="comment">#这样可以输出abcdf</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>切片访问</strong></p>
+<ul>
+<li><code>[a,b]</code>:左闭右开，取左不取右</li>
+<li>【头下标：尾下标：步长】</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">s=<span class="string">&#x27;abc defg hijk&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(s[<span class="number">0</span>:<span class="number">2</span>])</span><br><span class="line"><span class="built_in">print</span>(s[<span class="number">9</span>:<span class="number">12</span>])</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="解决字符串数字排序问题"><a href="#解决字符串数字排序问题" class="headerlink" title="解决字符串数字排序问题"></a>解决字符串数字排序问题</h3><ul>
+<li>使用匿名函数，第一个参数用来排序字符串，第二个参数用来排序数字。数字排序必须转成int或者其他数字格式，不然字符串10还是排在2前面。</li>
+<li>参数1和参数2根据实际判断，若是对数字排序则需要int强制转换</li>
+<li>参数是对数组中字符串的长度进行截取排序</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#arrRes.sort(key=lambda arr: (arr[:2], int(arr[2:])))</span></span><br><span class="line">arrRes = [<span class="string">&#x27;学生2&#x27;</span>, <span class="string">&#x27;学生1&#x27;</span>, <span class="string">&#x27;学生10&#x27;</span>, <span class="string">&#x27;学生4&#x27;</span>, <span class="string">&#x27;学生3&#x27;</span>]</span><br><span class="line">arrRes.sort(key=<span class="keyword">lambda</span> arr: (arr[:<span class="number">2</span>], <span class="built_in">int</span>(arr[<span class="number">2</span>:])))</span><br><span class="line"><span class="built_in">print</span>(arrRes)</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">path=<span class="string">&#x27;./data/jm/&#x27;</span>  <span class="comment">#返回当前进程的工作目录</span></span><br><span class="line">path_list=os.listdir(path)</span><br><span class="line">path_list.sort(key=<span class="keyword">lambda</span> x:<span class="built_in">int</span>(x[:-<span class="number">4</span>])) <span class="comment">#将‘.jpg’左边的字符转换成整数型进行排序</span></span><br><span class="line"><span class="built_in">print</span>(path_list)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="条件判断"><a href="#条件判断" class="headerlink" title="条件判断"></a>条件判断</h1><h2 id="单行判断if"><a href="#单行判断if" class="headerlink" title="单行判断if"></a>单行判断if</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> 条件:<span class="comment">#if后面要加冒号，同时执行语句要缩进四个空格</span></span><br><span class="line">	执行语句</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">stonenumber=<span class="number">6</span></span><br><span class="line"><span class="keyword">if</span> stonenumber&gt;=<span class="number">6</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;你拥有了毁灭宇宙的力量&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="双向判断if-else"><a href="#双向判断if-else" class="headerlink" title="双向判断if-else"></a>双向判断if-else</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> 条件:</span><br><span class="line">	执行语句<span class="number">1</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	执行语句<span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">weight=<span class="number">60</span></span><br><span class="line"><span class="keyword">if</span> weight&gt;=<span class="number">100</span>:</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&#x27;不吃了&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&#x27;放心吃吧&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="多向判断if–elif–else"><a href="#多向判断if–elif–else" class="headerlink" title="多向判断if–elif–else"></a>多向判断if–elif–else</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> 条件:</span><br><span class="line">	执行语句<span class="number">1</span></span><br><span class="line"><span class="keyword">elif</span> 条件<span class="number">2</span>:</span><br><span class="line">	执行语句<span class="number">2</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	执行语句<span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">stonenumber=<span class="number">0</span></span><br><span class="line"><span class="keyword">if</span> stonenumber&gt;=<span class="number">6</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;你拥有了毁灭宇宙的力量&#x27;</span>)</span><br><span class="line"><span class="keyword">elif</span> <span class="number">0</span>&lt;stonenumber&lt;=<span class="number">5</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;绯红女巫需要亲手毁掉幻视额头上的心灵宝石&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;需要惊奇队长逆转未来&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="if嵌套"><a href="#if嵌套" class="headerlink" title="if嵌套"></a>if嵌套</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">historyscore=<span class="number">26</span></span><br><span class="line"><span class="keyword">if</span> historyscore&gt;=<span class="number">60</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;你已经及格&#x27;</span>)  </span><br><span class="line">    <span class="keyword">if</span> historyscore&gt;=<span class="number">80</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;你很优秀&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;你只是一般般&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;不及格&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;程序结束&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="输入input-函数"><a href="#输入input-函数" class="headerlink" title="输入input()函数"></a>输入input()函数</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="built_in">input</span>(<span class="string">&#x27;请在以下四个选项【格兰芬多；斯莱特林；拉文克劳；赫奇帕奇】中，输入你想去的学院名字: &#x27;</span>)<span class="comment">#name为字符串型</span></span><br><span class="line"><span class="built_in">print</span>(name +<span class="string">&#x27;学院欢迎你，小萌新!&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>input函数的结果必须赋值</li>
+<li>input()的数据类型是字符串，其他类型转成字符串</li>
+</ul>
+<p>强制转换</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">choice = <span class="type">int</span>(input(<span class="string">&#x27;请输入您的选择：&#x27;</span>))<span class="meta">#choice强制转换成整型</span></span><br><span class="line"><span class="keyword">if</span> choice == <span class="number">1</span>:</span><br><span class="line">    print(<span class="string">&#x27;霍格沃茨欢迎您的到来&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span> :</span><br><span class="line">    print(<span class="string">&#x27;您可是被梅林选中的孩子，我们不接受这个选项&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h1><ul>
+<li>Tab键和空格键不能同时混用。</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://github.com/wjl-a/data.github.io">醉卿枫</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://github.com/wjl-a/data.github.io/post/7387e15a.html">https://github.com/wjl-a/data.github.io/post/7387e15a.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://github.com/wjl-a/data.github.io" target="_blank">醉卿枫の博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/data.github.io/tags/python-python%E8%AF%AD%E6%B3%95/">python/python语法</a></div><div class="post_share"><div class="social-share" data-image="https://bu.dusays.com/2022/05/29/62939662553c9.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/data.github.io/post/65cd25d3.html" title="2.python基础进阶"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://bu.dusays.com/2022/05/26/628fa0426213d.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-03</div><div class="title">2.python基础进阶</div></div></a></div><div><a href="/data.github.io/post/9aab5b6a.html" title="3.python进阶2"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://bu.dusays.com/2022/06/05/629c5257753d1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-03</div><div class="title">3.python进阶2</div></div></a></div><div><a href="/data.github.io/post/3117290d.html" title="4.python模块"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://bu.dusays.com/2022/06/05/629c5257753d1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-03</div><div class="title">4.python模块</div></div></a></div><div><a href="/data.github.io/post/df468e0.html" title="6.python数据分析"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://bu.dusays.com/2022/05/26/628fa0426213d.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-03</div><div class="title">6.python数据分析</div></div></a></div><div><a href="/data.github.io/post/f405ebe7.html" title="5.python基础自动画办公"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://bu.dusays.com/2022/05/29/62939662553c9.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-03</div><div class="title">5.python基础自动画办公</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/12.png" onerror="this.onerror=null;this.src='/data.github.io/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">醉卿枫</div><div class="author-info__description">学习记录</div></div><div class="card-info-data site-data is-center"><a href="/data.github.io/archives/"><div class="headline">文章</div><div class="length-num">28</div></a><a href="/data.github.io/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/data.github.io/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><a id="card-info-btn" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BE%93%E5%85%A5print-%E5%87%BD%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text">输入print()函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E5%87%A0%E7%A7%8D%E5%BD%A2%E5%BC%8F"><span class="toc-number">1.1.</span> <span class="toc-text">输出几种形式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E5%B8%A6%E5%BC%95%E5%8F%B7"><span class="toc-number">1.1.1.</span> <span class="toc-text">不带引号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E5%BC%95%E5%8F%B7"><span class="toc-number">1.1.2.</span> <span class="toc-text">单引号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8C%E5%BC%95%E5%8F%B7"><span class="toc-number">1.1.3.</span> <span class="toc-text">双引号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E5%BC%95%E5%8F%B7"><span class="toc-number">1.1.4.</span> <span class="toc-text">三引号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6"><span class="toc-number">1.1.5.</span> <span class="toc-text">转义字符</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#print-%E4%B8%8D%E6%8D%A2%E8%A1%8C"><span class="toc-number">1.2.</span> <span class="toc-text">print()不换行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#print-%E5%AE%8C%E6%95%B4%E5%8F%82%E6%95%B0"><span class="toc-number">1.3.</span> <span class="toc-text">print()完整参数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E5%92%8C%E8%B5%8B%E5%80%BC"><span class="toc-number">2.</span> <span class="toc-text">变量和赋值</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99"><span class="toc-number">2.1.</span> <span class="toc-text">命名规则</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-number">2.1.0.1.</span> <span class="toc-text">关键字</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.</span> <span class="toc-text">数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E5%88%99%E8%BF%90%E7%AE%97"><span class="toc-number">3.1.</span> <span class="toc-text">四则运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E6%8B%BC%E6%8E%A5"><span class="toc-number">3.2.</span> <span class="toc-text">数据的拼接</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E2%80%9C-%E2%80%9D%E5%8F%B7%E5%B0%86%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%8B%BC%E6%8E%A5"><span class="toc-number">3.2.1.</span> <span class="toc-text">用“+”号将数据进行拼接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E7%AC%A6"><span class="toc-number">3.2.2.</span> <span class="toc-text">格式符%</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#format%E5%87%BD%E6%95%B0"><span class="toc-number">3.2.3.</span> <span class="toc-text">format函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%AE%E7%82%B9%E6%95%B0%E4%BF%9D%E7%95%99%E5%B0%8F%E6%95%B0"><span class="toc-number">3.2.3.1.</span> <span class="toc-text">浮点数保留小数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%9F%A5%E8%AF%A2type-%E5%87%BD%E6%95%B0"><span class="toc-number">3.2.4.</span> <span class="toc-text">数据类型查询type()函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%BD%AC%E6%8D%A2"><span class="toc-number">3.3.</span> <span class="toc-text">数据转换</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">4.</span> <span class="toc-text">字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%AE%BF%E9%97%AE"><span class="toc-number">4.1.</span> <span class="toc-text">字符串访问</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B0%E5%AD%97%E6%8E%92%E5%BA%8F%E9%97%AE%E9%A2%98"><span class="toc-number">4.1.1.</span> <span class="toc-text">解决字符串数字排序问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD"><span class="toc-number">5.</span> <span class="toc-text">条件判断</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E8%A1%8C%E5%88%A4%E6%96%ADif"><span class="toc-number">5.1.</span> <span class="toc-text">单行判断if</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8C%E5%90%91%E5%88%A4%E6%96%ADif-else"><span class="toc-number">5.2.</span> <span class="toc-text">双向判断if-else</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E5%90%91%E5%88%A4%E6%96%ADif%E2%80%93elif%E2%80%93else"><span class="toc-number">5.3.</span> <span class="toc-text">多向判断if–elif–else</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#if%E5%B5%8C%E5%A5%97"><span class="toc-number">5.4.</span> <span class="toc-text">if嵌套</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BE%93%E5%85%A5input-%E5%87%BD%E6%95%B0"><span class="toc-number">6.</span> <span class="toc-text">输入input()函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F"><span class="toc-number">7.</span> <span class="toc-text">注意</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/data.github.io/post/93b2f74a.html" title="mavros"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://bu.dusays.com/2022/05/29/62939662553c9.png" onerror="this.onerror=null;this.src='/data.github.io/img/404.jpg'" alt="mavros"/></a><div class="content"><a class="title" href="/data.github.io/post/93b2f74a.html" title="mavros">mavros</a><time datetime="2023-08-08T16:00:00.000Z" title="发表于 2023-08-09 00:00:00">2023-08-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/data.github.io/post/15fa7048.html" title="ROS"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://bu.dusays.com/2022/05/26/628fa0426213d.png" onerror="this.onerror=null;this.src='/data.github.io/img/404.jpg'" alt="ROS"/></a><div class="content"><a class="title" href="/data.github.io/post/15fa7048.html" title="ROS">ROS</a><time datetime="2023-07-28T16:00:00.000Z" title="发表于 2023-07-29 00:00:00">2023-07-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/data.github.io/post/c010a565.html" title="3.c++模板"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://bu.dusays.com/2022/05/26/628fa0426213d.png" onerror="this.onerror=null;this.src='/data.github.io/img/404.jpg'" alt="3.c++模板"/></a><div class="content"><a class="title" href="/data.github.io/post/c010a565.html" title="3.c++模板">3.c++模板</a><time datetime="2023-07-09T13:03:00.000Z" title="发表于 2023-07-09 21:03:00">2023-07-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/data.github.io/post/2bc4fa53.html" title="2.c++类2"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://bu.dusays.com/2022/06/05/629c5257753d1.png" onerror="this.onerror=null;this.src='/data.github.io/img/404.jpg'" alt="2.c++类2"/></a><div class="content"><a class="title" href="/data.github.io/post/2bc4fa53.html" title="2.c++类2">2.c++类2</a><time datetime="2023-07-09T13:02:00.000Z" title="发表于 2023-07-09 21:02:00">2023-07-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/data.github.io/post/f145b64d.html" title="1.c++类"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://bu.dusays.com/2022/05/29/62939662553c9.png" onerror="this.onerror=null;this.src='/data.github.io/img/404.jpg'" alt="1.c++类"/></a><div class="content"><a class="title" href="/data.github.io/post/f145b64d.html" title="1.c++类">1.c++类</a><time datetime="2023-07-09T13:01:00.000Z" title="发表于 2023-07-09 21:01:00">2023-07-09</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://bu.dusays.com/2022/05/29/62939662553c9.png')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By 醉卿枫</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/data.github.io/js/utils.js"></script><script src="/data.github.io/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/data.github.io/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/data.github.io/js/search/local-search.js"></script></div></div></body></html>
