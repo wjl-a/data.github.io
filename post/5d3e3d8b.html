@@ -1,0 +1,512 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>soildworks | 醉卿枫の博客</title><meta name="author" content="醉卿枫"><meta name="copyright" content="醉卿枫"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="模拟力学仿真计算 插件总结 Motion 使用完整的运动性建模来计算零部件运动 SimulationXpress：一个简单形变仿真的向导，可以显示单个零件受力后的形变过程 simulation：静应力分析，拓扑优化等 Flow Simulation：研究流体力学    操作步骤 首先点击simulation 插件中的simulation premium，待标题栏出现simulation后点击图标">
+<meta property="og:type" content="article">
+<meta property="og:title" content="soildworks">
+<meta property="og:url" content="https://github.com/wjl-a/data.github.io/post/5d3e3d8b.html">
+<meta property="og:site_name" content="醉卿枫の博客">
+<meta property="og:description" content="模拟力学仿真计算 插件总结 Motion 使用完整的运动性建模来计算零部件运动 SimulationXpress：一个简单形变仿真的向导，可以显示单个零件受力后的形变过程 simulation：静应力分析，拓扑优化等 Flow Simulation：研究流体力学    操作步骤 首先点击simulation 插件中的simulation premium，待标题栏出现simulation后点击图标">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://bu.dusays.com/2022/05/29/62939662553c9.png">
+<meta property="article:published_time" content="2023-10-27T13:01:00.000Z">
+<meta property="article:modified_time" content="2023-12-06T12:49:18.031Z">
+<meta property="article:author" content="醉卿枫">
+<meta property="article:tag" content="ROS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://bu.dusays.com/2022/05/29/62939662553c9.png"><link rel="shortcut icon" href="/data.github.io/img/favicon.png"><link rel="canonical" href="https://github.com/wjl-a/data.github.io/post/5d3e3d8b.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/data.github.io/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/data.github.io/',
+  algolia: undefined,
+  localSearch: {"path":"/data.github.io/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'soildworks',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-12-06 20:49:18'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.0.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (true) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/12.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/data.github.io/archives/"><div class="headline">文章</div><div class="length-num">30</div></a><a href="/data.github.io/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/data.github.io/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/data.github.io/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/data.github.io/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/data.github.io/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/data.github.io/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/data.github.io/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/data.github.io/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/data.github.io/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://bu.dusays.com/2022/05/29/62939662553c9.png')"><nav id="nav"><span id="blog-info"><a href="/data.github.io/" title="醉卿枫の博客"><span class="site-name">醉卿枫の博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/data.github.io/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/data.github.io/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/data.github.io/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/data.github.io/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/data.github.io/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/data.github.io/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/data.github.io/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">soildworks</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-10-27T13:01:00.000Z" title="发表于 2023-10-27 21:01:00">2023-10-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-12-06T12:49:18.031Z" title="更新于 2023-12-06 20:49:18">2023-12-06</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>18分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="soildworks"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="模拟力学仿真计算"><a href="#模拟力学仿真计算" class="headerlink" title="模拟力学仿真计算"></a>模拟力学仿真计算</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/seek97/article/details/124368553">插件总结</a><ul>
+<li>Motion 使用完整的运动性建模来计算零部件运动</li>
+<li>SimulationXpress：一个简单形变仿真的向导，可以显示单个零件受力后的形变过程</li>
+<li>simulation：静应力分析，拓扑优化等</li>
+<li>Flow Simulation：研究流体力学</li>
+</ul>
+</li>
+</ul>
+<h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><ul>
+<li>首先点击simulation 插件中的simulation premium，待标题栏出现simulation后点击图标</li>
+<li>接着点击新算例，一般选择静应力分析，</li>
+<li>先对应用材料信息进行设置（最好先在零件中完成设置）<ul>
+<li>在零件编辑树中右键—材料—编辑材料，可自定义材料信息<br>![[Pasted image 20231020090729.png]]</li>
+</ul>
+</li>
+<li>选择夹具顾问中的固定几何体，进而对零件某个面进行固定</li>
+<li>点击运行此算例中的<strong>运行网格</strong>，网格密度一般选择中间（网格越密效果越好）</li>
+<li>在外部载荷顾问中选择合适的力</li>
+<li>点击运行此算例，接着就可以在结果一栏中看到分析结果<ul>
+<li>有应变，位移应变分析,下图是放大了4000倍<br>![[Pasted image 20231020095505.png]]</li>
+</ul>
+</li>
+<li>最终结果是看实际机械结构的最大应力，然后仿真结果进行对比，看是否超出范围</li>
+</ul>
+<h1 id="soildworks导出urdf"><a href="#soildworks导出urdf" class="headerlink" title="soildworks导出urdf"></a>soildworks导出urdf</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/lun55423/article/details/113859961#:~:text=%E5%AF%BC%E5%85%A5Gazebo%201%20%E5%A4%8D%E5%88%B6%E6%A8%A1%E5%9E%8B%E6%96%87%E4%BB%B6%E5%A4%B9%E5%88%B0workspace%E7%9A%84src%E7%9B%AE%E5%BD%95%E4%B8%8B,2%20%E8%BF%94%E5%9B%9E%E5%B7%A5%E4%BD%9C%E7%A9%BA%E9%97%B4%E7%9B%AE%E5%BD%95%EF%BC%8Ccatkin_make%E7%BC%96%E8%AF%91%EF%BC%8Csource%E4%B8%80%E4%B8%8B%203%20%E8%BF%90%E8%A1%8Cgazebo.launch%E6%96%87%E4%BB%B6%EF%BC%8C%E5%AE%8C%E6%88%90">来源1</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/vcan123/p/14264202.html">来源</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/shdhckcjc/article/details/129331111">细节</a></li>
+<li>在装配装配体前首先设置好原点，这样可以保证初始的坐标系<ul>
+<li>也就是装配体插入第一个零件时，先设置成浮动，接着使原点和零件中的原点重合</li>
+<li>最后配合好的形状也就是urdf和gazebo中的初始状态模型</li>
+<li>注意base_link的坐标要设置在与地面接触的地方，若在机身中会在gazebo中零件会不规律，报错</li>
+</ul>
+</li>
+<li>首先先安装urdf插件</li>
+<li>对于模型需要设置坐标系的零件来说，首先先设置好基准轴(旋转轴)<ul>
+<li>插入—参考几何体—基准轴、坐标系</li>
+<li>由于自动生成的坐标系可能有问题，所以说需要我们自己去设置基准轴，坐标系等</li>
+<li>思路，先设置出基准轴，接着根据轴与平面(或者其他轴)相交产生一个点,根据这个点生成坐标系并调整。<ul>
+<li>对于坐标系来说，需要限定两个方向才能将这个坐标系固定</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>工具—Tools—Export-URDF</li>
+</ul>
+<p><strong>设置坐标系</strong></p>
+<ul>
+<li>首先是base_link，最好将底座设置中心设置成原点<br>![[Pasted image 20231028103244.png]]</li>
+<li>点击子节点进行设置即可，对于子节点，joint type设置的是旋转类型，后面添加的零件是该部分link的所有零件<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41420355/article/details/104310896">join标签详解</a></li>
+<li><strong>添加的零件是绕着该旋转轴直接旋转的关节</strong>，最好添加完整，否则只会显示添加的零件，也就是让这个轴旋转的所有关节b，但b(b包含a)不包含以b为父关节的子关节a</li>
+<li>Link代表骨骼，就是每一个部分。joint代表关节，就是两个关节的组合(以腿为例：Link_小腿，Link_大腿，组合成joint_膝盖)<br>![[Pasted image 20231028104404.png]]</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">continuous</th>
+<th align="left">一个不受限制的，绕着一根轴的转动副</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">revolute</td>
+<td align="left">一个转动角度限制的，绕着一根轴的转动副</td>
+</tr>
+<tr>
+<td align="left">prismatic</td>
+<td align="left">一个沿着一根轴的滑动副，并有限位</td>
+</tr>
+<tr>
+<td align="left">fixed</td>
+<td align="left">固定关节</td>
+</tr>
+<tr>
+<td align="left">Automatically Detect</td>
+<td align="left">可以后面调整具体</td>
+</tr>
+<tr>
+<td align="left">floating</td>
+<td align="left">这个关节允许6个自由度运动，浮动关节</td>
+</tr>
+</tbody></table>
+<p><strong>基本设置好后</strong></p>
+<ul>
+<li>√是保存模型信息(添加模型信息和命名后最好保存下)，添加坐标轴和坐标系最好最后添加（保存后再次打开会变成Automatically Generate），全部完成后点击Preview and Export…<br>![[Pasted image 20231028123338.png]]</li>
+<li>接着会自动生成坐标系，因为生成的可能是错误的，如果是手动调整好的就不管，其中origin中的坐标是相对于上个坐标系的偏移与偏角。</li>
+<li>点击next后，Inertial是电脑计算的惯性矩等信息，最终导出得到文件夹<br>![[Pasted image 20231028131321.png]]</li>
+</ul>
+<h2 id="urdf文件内容详解"><a href="#urdf文件内容详解" class="headerlink" title="urdf文件内容详解"></a>urdf文件内容详解</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41306193/article/details/122349085?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522169872657416800180639152%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=169872657416800180639152&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-122349085-null-null.142%5Ev96%5Epc_search_result_base6&utm_term=urdf&spm=1018.2226.3001.4187">手写移动机器人urdf详解</a><br>以var_strc_uav文件夹为例</li>
+<li>config：包含这joint_names_var_strc_uav.yaml文件，里面包含着关节名，config文件夹用以保存rviz的配置文件</li>
+<li>launch：包含diaplay.launch(rviz启动)，gazebo.launch(gazebo启动)</li>
+<li>meshes：包含着模型文件(stl格式)，防止urdf中引用的模型渲染文件</li>
+<li>textures:</li>
+<li>urdf：包含var_strc_uav.urdf和var_strc_uav.csv，可以存放机器人模型的urdf或者xacro文件文件</li>
+<li>CmakeLists.txt：直接规定了这个功能包需要依赖哪些package，要编译生成哪些目标，如何编译等流程</li>
+<li>package.xml：描述这个软件包的描述文件，包含了该功能包的名称、版本号、维护人员等信息。<ul>
+<li>[[xml|xml基本用法]]</li>
+</ul>
+</li>
+</ul>
+<h3 id="urdf文件"><a href="#urdf文件" class="headerlink" title="urdf文件"></a>urdf文件</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/lc1852109/article/details/125916104">标签详解</a></li>
+<li><a target="_blank" rel="noopener" href="https://wiki.ros.org/urdf/XML">标签官网详解</a><br>使用命令：urdf_to_graphiz var_strc_uav.urdf可以看节点关系<br>![[Pasted image 20231110124855.png]]</li>
+</ul>
+<h4 id="添加robot标签"><a href="#添加robot标签" class="headerlink" title="添加robot标签"></a>添加robot标签</h4><ul>
+<li>robot标签是用以描述整个机器人的。这里要注意的是xml语言中标签是要闭合的，要是不闭合的话后面是会报错误的<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;utf-8&quot;</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">robot</span> <span class="attr">name</span>=<span class="string">&quot;mbot&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">robot</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>这里第一行是对xml语言的版本号进行描述，声明以下代码是使用xml语言进行编写的；mbot是所创建机器人模型的名称，在两个robot标签之间就可以添加模型配置参数了。</li>
+</ul>
+<h4 id="使用link标签创建模型"><a href="#使用link标签创建模型" class="headerlink" title="使用link标签创建模型"></a>使用link标签创建模型</h4><ul>
+<li>link标签是用以描述机器人某个刚体部分的外观和物理属性的，其参数包括连杆尺寸（size）、颜色（color）、形状（shape）、惯性矩阵（inertial matrix）、碰撞参数（collision properties）等。</li>
+<li><code>&lt;inertial&gt;</code>：描述了惯性信息，包括质量、质心位置和惯性矩阵。<ul>
+<li><code>&lt;origin&gt;</code>：描述质心的位置和姿态。xyz属性是质心的位置，rpy是质心的姿态</li>
+<li><code>&lt;mass&gt;</code>：描述链接的质量。</li>
+<li><code>&lt;inertia&gt;</code>：描述链接的惯性矩阵。</li>
+</ul>
+</li>
+<li><code>&lt;visual&gt;</code>：描述了链接的可视化外观。<ul>
+<li><code>&lt;origin&gt;</code>：描述可视化外观的位置和姿态。</li>
+<li><code>&lt;geometry&gt;</code>：描述可视化外观的几何形状。<ul>
+<li><code>&lt;mesh&gt;</code>：描述链接的网格形状，其中”filename”属性指定了网格文件的路径。</li>
+</ul>
+</li>
+<li><code>&lt;material&gt;</code>：描述了材质的外观属性。<ul>
+<li>name属性：指定了材质的名称。</li>
+<li><code>&lt;color&gt;</code>：描述了材质的颜色属性。</li>
+<li>rgba属性：RGBA（红、绿、蓝、透明度）值通常在0到1之间取值。每个通道的取值范围是从0到1，其中0表示最小的颜色强度或透明度</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>&lt;collision&gt;</code>：描述链接的碰撞检测外观，用于物理交互模拟。<ul>
+<li><code>&lt;origin&gt;</code>：描述碰撞检测外观的位置和姿态。</li>
+<li><code>&lt;geometry&gt;</code>：描述碰撞检测外观的几何形状。<ul>
+<li><code>&lt;mesh&gt;</code>：描述链接的网格形状，其中”filename”属性指定了网格文件的路径。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span></span></span><br><span class="line"><span class="tag">  <span class="attr">name</span>=<span class="string">&quot;base_link&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">inertial</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">origin</span></span></span><br><span class="line"><span class="tag">      <span class="attr">xyz</span>=<span class="string">&quot;1.72914627334106E-06 1.14526384273527E-11 0.125972978720317&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">rpy</span>=<span class="string">&quot;0 0 0&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mass</span></span></span><br><span class="line"><span class="tag">      <span class="attr">value</span>=<span class="string">&quot;1.30165543679935&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">inertia</span></span></span><br><span class="line"><span class="tag">      <span class="attr">ixx</span>=<span class="string">&quot;0.00224695292268191&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">ixy</span>=<span class="string">&quot;-2.79132144572356E-11&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">ixz</span>=<span class="string">&quot;1.31602008096035E-19&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">iyy</span>=<span class="string">&quot;0.00631415383644451&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">iyz</span>=<span class="string">&quot;-8.06503412892502E-20&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">izz</span>=<span class="string">&quot;0.00750920095649338&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">inertial</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">visual</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">origin</span></span></span><br><span class="line"><span class="tag">      <span class="attr">xyz</span>=<span class="string">&quot;0 0 0&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">rpy</span>=<span class="string">&quot;0 0 0&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">geometry</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">mesh</span></span></span><br><span class="line"><span class="tag">        <span class="attr">filename</span>=<span class="string">&quot;package://var_strc_uav/meshes/base_link.STL&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">geometry</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">material</span></span></span><br><span class="line"><span class="tag">      <span class="attr">name</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">color</span></span></span><br><span class="line"><span class="tag">        <span class="attr">rgba</span>=<span class="string">&quot;1 1 1 1&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">material</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">visual</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">collision</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">origin</span></span></span><br><span class="line"><span class="tag">      <span class="attr">xyz</span>=<span class="string">&quot;0 0 0&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">rpy</span>=<span class="string">&quot;0 0 0&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">geometry</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">mesh</span></span></span><br><span class="line"><span class="tag">        <span class="attr">filename</span>=<span class="string">&quot;package://var_strc_uav/meshes/base_link.STL&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">geometry</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">collision</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">link</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="joint标签连接模型"><a href="#joint标签连接模型" class="headerlink" title="joint标签连接模型"></a>joint标签连接模型</h4><ul>
+<li><code>&lt;joint&gt;</code>：描述了一个关节。<ul>
+<li>name属性：指定了关节的名称，这里是”right_hind_joint5”。</li>
+<li>type属性：指定了关节的类型，这里是”continuous”，表示关节可以无限制地旋转。</li>
+</ul>
+</li>
+<li><code>&lt;origin&gt;</code>：描述了关节原点的位置和姿态。<ul>
+<li>xyz属性：指定了关节原点的位置</li>
+<li>rpy属性：指定了关节原点的姿态</li>
+</ul>
+</li>
+<li><code>&lt;parent&gt;</code>：描述了该关节的父链接（parent link）。<ul>
+<li>link属性：指定了父链接的名称，这里是”right_hind_link4”</li>
+</ul>
+</li>
+<li><code>&lt;child&gt;</code>：描述了该关节的子链接（child link）<ul>
+<li>link属性：指定了子链接的名称，这里是”right_hind_link5”</li>
+</ul>
+</li>
+<li><code>&lt;axis&gt;</code>：描述了关节的旋转轴<ul>
+<li>xyz属性：指定了旋转轴的方向，这里是(0, 0, -1)，表示绕Z轴逆时针旋转。<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">&lt;!-- continuous无限制角度 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">joint</span></span></span><br><span class="line"><span class="tag">    <span class="attr">name</span>=<span class="string">&quot;right_hind_joint5&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">type</span>=<span class="string">&quot;continuous&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">origin</span></span></span><br><span class="line"><span class="tag">      <span class="attr">xyz</span>=<span class="string">&quot;0.0682997475619318 -0.0101500000000048 0.0110000000000001&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">rpy</span>=<span class="string">&quot;-1.5707963267949 -0.594899552273233 -1.5707963267949&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">parent</span></span></span><br><span class="line"><span class="tag">      <span class="attr">link</span>=<span class="string">&quot;right_hind_link4&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">child</span></span></span><br><span class="line"><span class="tag">      <span class="attr">link</span>=<span class="string">&quot;right_hind_link5&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">axis</span></span></span><br><span class="line"><span class="tag">      <span class="attr">xyz</span>=<span class="string">&quot;0 0 -1&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">joint</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">   <span class="comment">&lt;!-- revolute限制角度，与上面类似，只是多个下面的东西 --&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">joint</span></span></span><br><span class="line"><span class="tag">    <span class="attr">name</span>=<span class="string">&quot;right_front_joint1&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">type</span>=<span class="string">&quot;revolute&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">limit</span> <span class="attr">effort</span>=<span class="string">&quot;30&quot;</span> <span class="attr">velocity</span>=<span class="string">&quot;1.0&quot;</span> <span class="attr">lower</span>=<span class="string">&quot;-1.2&quot;</span> <span class="attr">upper</span>=<span class="string">&quot;1.0&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">joint</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<p>对于齿轮连接可，就用<code>&lt;mimic&gt;</code>标签实现</p>
+<ul>
+<li>例子<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> ?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">robot</span> <span class="attr">xmlns:xacro</span>=<span class="string">&quot;http://ros.org/wiki/xacro&quot;</span> <span class="attr">name</span>=<span class="string">&quot;my_robot&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">link</span></span></span><br><span class="line"><span class="tag">    <span class="attr">name</span>=<span class="string">&quot;right_front_link2&quot;</span>&gt;</span></span><br><span class="line">    .....</span><br><span class="line">  <span class="tag">&lt;/<span class="name">link</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span></span></span><br><span class="line"><span class="tag">    <span class="attr">name</span>=<span class="string">&quot;right_front_link5&quot;</span>&gt;</span></span><br><span class="line">    .....</span><br><span class="line">  <span class="tag">&lt;/<span class="name">link</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">joint</span></span></span><br><span class="line"><span class="tag">    <span class="attr">name</span>=<span class="string">&quot;right_front_joint4&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">type</span>=<span class="string">&quot;continuous&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">origin</span></span></span><br><span class="line"><span class="tag">      <span class="attr">xyz</span>=<span class="string">&quot;0.184 0 0&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">rpy</span>=<span class="string">&quot;0 0 0&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">parent</span></span></span><br><span class="line"><span class="tag">      <span class="attr">link</span>=<span class="string">&quot;right_front_link2&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">child</span></span></span><br><span class="line"><span class="tag">      <span class="attr">link</span>=<span class="string">&quot;right_front_link4&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">axis</span></span></span><br><span class="line"><span class="tag">      <span class="attr">xyz</span>=<span class="string">&quot;0 0 1&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">joint</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 添加minic标签后，其实这里就直接通过right_front_joint3直接控制right_front_joint5了，在也就是..._joint3转一圈，...joint5转2圈 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 对于他们之间关系，如果这里的父节点是right_front_link3,那么right_front_link5会绕着right_front_link3中心旋转，应该绕着我们之前设置的坐标旋转，即...link5在...link2设置的轴线 --&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">joint</span></span></span><br><span class="line"><span class="tag">    <span class="attr">name</span>=<span class="string">&quot;right_front_joint5&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">type</span>=<span class="string">&quot;continuous&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">origin</span></span></span><br><span class="line"><span class="tag">      <span class="attr">xyz</span>=<span class="string">&quot;0.184 0 0&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">rpy</span>=<span class="string">&quot;0 0 0&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">parent</span></span></span><br><span class="line"><span class="tag">      <span class="attr">link</span>=<span class="string">&quot;right_front_link2&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">child</span></span></span><br><span class="line"><span class="tag">      <span class="attr">link</span>=<span class="string">&quot;right_front_link5&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">axis</span></span></span><br><span class="line"><span class="tag">      <span class="attr">xyz</span>=<span class="string">&quot;0 0 -1&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mimic</span> <span class="attr">joint</span>=<span class="string">&quot;right_front_joint3&quot;</span> <span class="attr">multiplier</span>=<span class="string">&quot;2&quot;</span>/&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- multiplier论径比例 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">joint</span>&gt;</span></span><br><span class="line">  </span><br><span class="line"><span class="tag">&lt;/<span class="name">robot</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="gazebo标签"><a href="#gazebo标签" class="headerlink" title="gazebo标签"></a>gazebo标签</h3><ul>
+<li>在gazebo仿真，有自己的标签<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- gazebo自己的颜色信息 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">gazebo</span> <span class="attr">reference</span>=<span class="string">&quot;base_link&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">material</span>&gt;</span>Gazebo/Red<span class="tag">&lt;/<span class="name">material</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">gazebo</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42226250/article/details/110881207">gazebo颜色</a></li>
+</ul>
+<h3 id="sdf文件和urdf和xacro文件的区别"><a href="#sdf文件和urdf和xacro文件的区别" class="headerlink" title="sdf文件和urdf和xacro文件的区别"></a>sdf文件和urdf和xacro文件的区别</h3><ul>
+<li>SDF文件用于描述仿真环境，URDF文件用于描述机器人模型，而Xacro则是一种用于简化URDF文件编写的工具</li>
+<li>sdf文件、urdf文件和xacro文件都是模型文件。</li>
+<li>xacro文件是urdf文件的改进版，urdf文件只能在rviz等中显示，不能在仿真器中显示出来。</li>
+<li>xacro文件可以在gazebo仿真器中显示出来，相对urdf文件，xacro文件增加了更多的属性设置标签。</li>
+<li>sdf文件和urdf文件、xacro文件都可以加载dae等三维模型文件。</li>
+<li>sdf和urdf、xacro的<strong>区别</strong><ul>
+<li>ros和gazebo 不能使得sdf模型动起来、sdf模型有自己的行为</li>
+<li>ros和gazebo能使得urdf、xacro模型动起来、urdf、xacro模型有自己的行为</li>
+</ul>
+</li>
+<li>当前，sdf文件和urdf、xacro文件之间还不能自动转换，只能根据实体手动转换。</li>
+</ul>
+<h2 id="gazebo设置"><a href="#gazebo设置" class="headerlink" title="gazebo设置"></a>gazebo设置</h2><ul>
+<li>将生成好的文件夹复制到catkin_ws&#x2F;src下，接着<code>catkin_make</code>编译</li>
+<li>在终端输入命令<code>roslaunch var_strc_uav display.launch</code>，弹出rvia界面\</li>
+<li>在Fixed Frame中选择base_link作为底盘坐标系</li>
+<li>点击<code>Add---rviz----Robotmodel</code>显现模型<ul>
+<li>保存配置项:File—save config as</li>
+<li>rviz：左键旋转，中键平移拖动，中键滚轮缩放</li>
+</ul>
+</li>
+<li>关闭rviz后，修改display.launch中，没有这行代码就添加，有则修改成下面的代码形式；终端输入上述命令，会弹出一个窗口，通过移动滑条（Joint State Publish工具）来控制关节的旋转，判断是否正确旋转<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 在原来display.launch代码中后面修改 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 添加该代码后就不用手动添加，但要提前保存 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">node</span> <span class="attr">name</span>=<span class="string">&quot;rviz&quot;</span> <span class="attr">pkg</span>=<span class="string">&quot;rviz&quot;</span> <span class="attr">type</span>=<span class="string">&quot;rviz&quot;</span> <span class="attr">args</span>=<span class="string">&quot;-d $(find var_strc_uav)/urdf/config.rviz&quot;</span> <span class="attr">required</span>=<span class="string">&quot;true&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">node</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 把下面的注释调 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- &lt;node</span></span><br><span class="line"><span class="comment">  name=&quot;rviz&quot;</span></span><br><span class="line"><span class="comment">  pkg=&quot;rviz&quot;</span></span><br><span class="line"><span class="comment">  type=&quot;rviz&quot;</span></span><br><span class="line"><span class="comment">  args=&quot;-d $(find var_strc_uav)/urdf.rviz&quot; /&gt; --&gt;</span></span><br></pre></td></tr></table></figure>
+其中，我们需要对旋转方向进行判断和规定</li>
+<li>对于舵机1来说，从下向上旋转，从机身向外为正<br>![[Pasted image 20231103195306.png]]</li>
+<li>对于舵机2来说，朝机身向外旋转为正</li>
+</ul>
+<p>![[Pasted image 20231103195420.png]]</p>
+<ul>
+<li>对于电机3来说，看螺旋桨旋转方向<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">axis</span> <span class="attr">xyz</span>=<span class="string">&quot;0 0 1&quot;</span> /&gt;</span>  <span class="comment">&lt;!--需要在joint标签改写， 对z轴来说，1是逆时针（右手定则），-1是顺时针--&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>判断没什么问题后，一般将之转为xacro文件进而添加控制驱动等进行控制</li>
+<li><code>使用check_urdf var_strc_uav.urdf</code>可检查urdf文件</li>
+</ul>
+<h1 id="xacro编写"><a href="#xacro编写" class="headerlink" title="xacro编写"></a>xacro编写</h1><ul>
+<li>[[xml#xacro语法|xacro语法]]</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/chishuideyu/article/details/53695392">官方解释</a></li>
+<li>而xacro中可以包含urdf文件中的joint和link标签等</li>
+</ul>
+<h2 id="将urdf模型文件变更为xacro文件"><a href="#将urdf模型文件变更为xacro文件" class="headerlink" title="将urdf模型文件变更为xacro文件"></a>将urdf模型文件变更为xacro文件</h2><ul>
+<li>首先，在urdf文件夹下的urdf文件复制并改后缀为.xacro</li>
+<li>将开头文件进行更改<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">robot</span> <span class="attr">name</span>=<span class="string">&quot;var_strc_uav&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--将上面的语句改为下面的语句,--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">robot</span> <span class="attr">name</span>=<span class="string">&quot;var_strc_uav&quot;</span>  <span class="attr">xmlns:xacro</span>=<span class="string">&quot;http://ros.org/wiki/xacro&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="在xacro文件中进行相关配置"><a href="#在xacro文件中进行相关配置" class="headerlink" title="在xacro文件中进行相关配置"></a>在xacro文件中进行相关配置</h3><ul>
+<li><a target="_blank" rel="noopener" href="http://www.autolabor.com.cn/book/ROSTutorials/di-6-zhang-ji-qi-ren-xi-tong-fang-zhen/67/671-ji-qi-ren-yun-dong-kong-zhi-yi-ji-li-cheng-ji-xin-xi-xian-shi.html">教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/u011017694/article/details/122357808">运动控制教程</a><br><strong>步骤</strong></li>
+</ul>
+<ol>
+<li>在创建完毕上的机器人模型，编写一个单独的xacro文件，为机器人模型添加传动装置以及控制器</li>
+<li>将此文件集成进xacro文件</li>
+<li>启动Gazebo并发布&#x2F;cmd+vel消息控制机器人运动</li>
+</ol>
+<h4 id="为joint添加传动装置"><a href="#为joint添加传动装置" class="headerlink" title="为joint添加传动装置"></a>为joint添加传动装置</h4><ul>
+<li>[[ros_control#transmission标签|transmission标签]]<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">xacro:macro</span> <span class="attr">name</span>=<span class="string">&quot;joint_trans&quot;</span> <span class="attr">params</span>=<span class="string">&quot;joint_name&quot;</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- Transmission is important to link the joints and the controller --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">transmission</span> <span class="attr">name</span>=<span class="string">&quot;$&#123;joint_name&#125;_trans&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">type</span>&gt;</span>transmission_interface/SimpleTransmission<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">joint</span> <span class="attr">name</span>=<span class="string">&quot;$&#123;joint_name&#125;&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">hardwareInterface</span>&gt;</span>hardware_interface/PositionJointInterface<span class="tag">&lt;/<span class="name">hardwareInterface</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">joint</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">actuator</span> <span class="attr">name</span>=<span class="string">&quot;$&#123;joint_name&#125;_motor&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">hardwareInterface</span>&gt;</span>hardware_interface/PositionJointInterface<span class="tag">&lt;/<span class="name">hardwareInterface</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">mechanicalReduction</span>&gt;</span>1<span class="tag">&lt;/<span class="name">mechanicalReduction</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">actuator</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">transmission</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">xacro:macro</span>&gt;</span></span><br><span class="line"> </span><br><span class="line">    <span class="comment">&lt;!-- 每一个驱动轮都需要配置传动装置 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">xacro:joint_trans</span> <span class="attr">joint_name</span>=<span class="string">&quot;left_wheel2base_link&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">xacro:joint_trans</span> <span class="attr">joint_name</span>=<span class="string">&quot;right_wheel2base_link&quot;</span> /&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>注意这里的硬件控制接口需要和yaml文件中的控制接口对应</li>
+<li>对于机械臂来说，一般用的位置控制</li>
+<li>车轮这种的应该是用的速度控制</li>
+</ul>
+<h4 id="添加gazebo控制器插件"><a href="#添加gazebo控制器插件" class="headerlink" title="添加gazebo控制器插件"></a>添加gazebo控制器插件</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">gazebo</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">plugin</span> <span class="attr">name</span>=<span class="string">&quot;gazebo_ros_control&quot;</span> <span class="attr">filename</span>=<span class="string">&quot;libgazebo_ros_control.so&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">robotNamespace</span>&gt;</span>/var_strc_uav<span class="tag">&lt;/<span class="name">robotNamespace</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">robotSimType</span>&gt;</span>gazebo_ros_control/DefaultRobotHWSim<span class="tag">&lt;/<span class="name">robotSimType</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">legacyModeNS</span>&gt;</span>true<span class="tag">&lt;/<span class="name">legacyModeNS</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">gazebo</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>&lt;plugin&gt;</code>:插件元素，用于在Gazebo中加载指定的插件。<ul>
+<li>name&#x3D;”gazebo_ros_control”: 插件的名称，这里是”gazebo_ros_control”。</li>
+<li>filename&#x3D;”libgazebo_ros_control.so”: 插件的文件名，这里是”libgazebo_ros_control.so”。这表示Gazebo将加载名为”libgazebo_ros_control.so”的共享库文件作为该插件。</li>
+<li><strong>插件的名称可以是任意的，但需要确保插件名称与加载的插件文件名匹配</strong>。在上述代码中，插件的名称是”gazebo_ros_control”，并且加载的插件文件名是”libgazebo_ros_control.so”。这是因为在加载插件时，Gazebo会查找与插件名称匹配的共享库文件。</li>
+</ul>
+</li>
+<li><code>&lt;robotNamespace&gt;/var_strc_uav&lt;/robotNamespace&gt;</code>: 机器人命名空间。这表示该插件将在名为”&#x2F;var_strc_uav”的命名空间下加载。也就是文件第二行机器人的命名名称：<code>robot name=&quot;var_strc_uav&quot;</code>，也就是后面话题会用到</li>
+<li><code>&lt;robotSimType&gt;gazebo_ros_control/DefaultRobotHWSim&lt;/robotSimType&gt;</code>: 机器人仿真类型。这表示Gazebo将使用”gazebo_ros_control&#x2F;DefaultRobotHWSim”作为机器人的仿真类型。</li>
+<li><legacyModeNS>true</legacyModeNS>: 是否启用遗留模式的命名空间。这里设置为”true”，表示启用遗留模式命名空间。</li>
+</ul>
+<h4 id="修改display-launch及gazebo-launch文件"><a href="#修改display-launch及gazebo-launch文件" class="headerlink" title="修改display.launch及gazebo.launch文件"></a>修改display.launch及gazebo.launch文件</h4><p>按照</p>
+<blockquote>
+<p>命名空间</p>
+<ul>
+<li>控制器<br>– 控制器参数<br>这样的格式写好配置，<a target="_blank" rel="noopener" href="https://wiki.ros.org/robot_mechanism_controllers">具体参数配置</a></li>
+</ul>
+</blockquote>
+<ul>
+<li>在config文件夹创建var_strc_uav_control.yaml<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">var_strc_uav:</span>     <span class="comment">#命名空间</span></span><br><span class="line">  <span class="comment"># Publish all joint states -----------------------------------</span></span><br><span class="line">  <span class="attr">joint_state_controller:</span></span><br><span class="line">    <span class="attr">type:</span> <span class="string">joint_state_controller/JointPositionController</span></span><br><span class="line">    <span class="attr">publish_rate:</span> <span class="number">50</span>  </span><br><span class="line"></span><br><span class="line">  <span class="comment"># Position Controllers ---------------------------------------</span></span><br><span class="line">  <span class="attr">right_front_joint1_control:</span>            <span class="comment">#控制器名称，后续会在launch使用</span></span><br><span class="line">    <span class="attr">type:</span> <span class="string">position_controllers/JointPositionController</span></span><br><span class="line">    <span class="attr">joint:</span> <span class="string">right_front_joint1</span>            <span class="comment">#控制关节名称</span></span><br><span class="line">    <span class="comment"># pid: &#123;p: 12.0, i: 0.01, d: 0.0&#125;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="attr">var_strc_uav/gazebo_ros_control/pid_gains:</span></span><br><span class="line">  <span class="attr">right_front_joint1:</span> &#123;<span class="attr">p:</span> <span class="number">10.0</span>, <span class="attr">i:</span> <span class="number">0.0</span>, <span class="attr">d:</span> <span class="number">0.0</span>&#125;</span><br></pre></td></tr></table></figure>
+在launch文件夹中创建gazebo_test.launch<br>模板说明<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">launch</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">&lt;!-- 将 Urdf 文件的内容加载到参数服务器 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">&quot;robot_description&quot;</span> <span class="attr">command</span>=<span class="string">&quot;$(find xacro)/xacro $(find 包名)/urdf/文件名&quot;</span> /&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 启动 gazebo --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">include</span> <span class="attr">file</span>=<span class="string">&quot;$(find gazebo_ros)/launch/empty_world.launch&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">arg</span> <span class="attr">name</span>=<span class="string">&quot;world_name&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$(find var_strc_uav)/worlds/hello.world&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- &lt;node name=&quot;rviz&quot; pkg=&quot;rviz&quot; type=&quot;rviz&quot; args=&quot;-d $(find var_strc_uav)/urdf/config.rviz&quot; required=&quot;true&quot;&gt;&lt;/node&gt;      --&gt;</span>    <span class="comment">&lt;!-- 加载rviz --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">rosparam</span> <span class="attr">file</span>=<span class="string">&quot;$(find 包名)/config/文件名.yaml&quot;</span> <span class="attr">command</span>=<span class="string">&quot;load&quot;</span>/&gt;</span>    <span class="comment">&lt;!-- 加载配置文件 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">node</span> <span class="attr">name</span>=<span class="string">&quot;controller_spawner&quot;</span> <span class="attr">pkg</span>=<span class="string">&quot;controller_manager&quot;</span> <span class="attr">type</span>=<span class="string">&quot;spawner&quot;</span> <span class="attr">respawn</span>=<span class="string">&quot;false&quot;</span> <span class="attr">output</span>=<span class="string">&quot;screen&quot;</span> <span class="attr">ns</span>=<span class="string">&quot;/命名空间&quot;</span> <span class="attr">args</span>=<span class="string">&quot;控制器名1 控制器名1...&quot;</span>/&gt;</span></span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">  <span class="comment">&lt;!-- 在 gazebo 中显示机器人模型 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">node</span> <span class="attr">pkg</span>=<span class="string">&quot;gazebo_ros&quot;</span> <span class="attr">type</span>=<span class="string">&quot;spawn_model&quot;</span> <span class="attr">name</span>=<span class="string">&quot;model&quot;</span> <span class="attr">args</span>=<span class="string">&quot;-urdf -model 模型名字 -param robot_description&quot;</span>  /&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 关节以及机器人状态发布节点 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">node</span> <span class="attr">name</span>=<span class="string">&quot;joint_state_publisher&quot;</span> <span class="attr">pkg</span>=<span class="string">&quot;joint_state_publisher&quot;</span> <span class="attr">type</span>=<span class="string">&quot;joint_state_publisher&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">node</span> <span class="attr">name</span>=<span class="string">&quot;robot_state_publisher&quot;</span> <span class="attr">pkg</span>=<span class="string">&quot;robot_state_publisher&quot;</span> <span class="attr">type</span>=<span class="string">&quot;robot_state_publisher&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">launch</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>在launch文件中node开头的，可以用rosnode list查看<br><strong>实例</strong><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">launch</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">&lt;!-- 将 Urdf 文件的内容加载到参数服务器 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">&quot;robot_description&quot;</span> <span class="attr">command</span>=<span class="string">&quot;$(find xacro)/xacro $(find var_strc_uav)/urdf/var_strc_uav.urdf.xacro&quot;</span> /&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 启动 gazebo --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">include</span> <span class="attr">file</span>=<span class="string">&quot;$(find gazebo_ros)/launch/empty_world.launch&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">arg</span> <span class="attr">name</span>=<span class="string">&quot;world_name&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$(find var_strc_uav)/worlds/hello.world&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- &lt;node name=&quot;rviz&quot; pkg=&quot;rviz&quot; type=&quot;rviz&quot; args=&quot;-d $(find var_strc_uav)/urdf/config.rviz&quot; required=&quot;true&quot;&gt;&lt;/node&gt;      --&gt;</span>    <span class="comment">&lt;!-- 加载rviz --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">rosparam</span> <span class="attr">file</span>=<span class="string">&quot;$(find var_strc_uav)/config/var_strc_uav_control.yaml&quot;</span> <span class="attr">command</span>=<span class="string">&quot;load&quot;</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">node</span> <span class="attr">name</span>=<span class="string">&quot;controller_spawner&quot;</span> <span class="attr">pkg</span>=<span class="string">&quot;controller_manager&quot;</span> <span class="attr">type</span>=<span class="string">&quot;spawner&quot;</span> <span class="attr">respawn</span>=<span class="string">&quot;false&quot;</span> <span class="attr">output</span>=<span class="string">&quot;screen&quot;</span> <span class="attr">ns</span>=<span class="string">&quot;/var_strc_uav&quot;</span> <span class="attr">args</span>=<span class="string">&quot;right_front_joint1_control right_front_joint2_control right_front_joint3_control right_front_joint4_control</span></span></span><br><span class="line"><span class="string"><span class="tag">                                                                                                                                      right_hind_joint1_control right_hind_joint2_control right_hind_joint3_control right_hind_joint4_control</span></span></span><br><span class="line"><span class="string"><span class="tag">                                                                                                                                      left_hind_joint1_control left_hind_joint2_control left_hind_joint3_control left_hind_joint4_control  </span></span></span><br><span class="line"><span class="string"><span class="tag">                                                                                                                                      left_front_joint1_control left_front_joint2_control left_front_joint3_control left_front_joint4_control &quot;</span>/&gt;</span></span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  <span class="comment">&lt;!-- 在 gazebo 中显示机器人模型 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">node</span> <span class="attr">pkg</span>=<span class="string">&quot;gazebo_ros&quot;</span> <span class="attr">type</span>=<span class="string">&quot;spawn_model&quot;</span> <span class="attr">name</span>=<span class="string">&quot;model&quot;</span> <span class="attr">args</span>=<span class="string">&quot;-urdf -model my_uav -param robot_description&quot;</span>  /&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 关节以及机器人状态发布节点 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">node</span> <span class="attr">name</span>=<span class="string">&quot;joint_state_publisher&quot;</span> <span class="attr">pkg</span>=<span class="string">&quot;joint_state_publisher&quot;</span> <span class="attr">type</span>=<span class="string">&quot;joint_state_publisher&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">node</span> <span class="attr">name</span>=<span class="string">&quot;robot_state_publisher&quot;</span> <span class="attr">pkg</span>=<span class="string">&quot;robot_state_publisher&quot;</span> <span class="attr">type</span>=<span class="string">&quot;robot_state_publisher&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">launch</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>后续</p>
+<ul>
+<li>catkin_make编译</li>
+<li>使用<code>roslaunch var_strc_uav display.launch</code>打开rviz并打开模型另存为到&#x2F;urdf&#x2F;config.rviz中</li>
+<li><code>roslaunch var_strc_uav gazebo_test.launch开启gazebo,</code>新终端输入<code>rostopic pub -1 /var_strc_uav/right_front_joint1_control/command std_msgs/Float64 &quot;data: 1.2&quot;</code>控制的一个电机旋转</li>
+<li>接着就是自己慢慢细化模型就行</li>
+<li>[[变结构无人机仿真教程]]</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://github.com/wjl-a/data.github.io">醉卿枫</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://github.com/wjl-a/data.github.io/post/5d3e3d8b.html">https://github.com/wjl-a/data.github.io/post/5d3e3d8b.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://github.com/wjl-a/data.github.io" target="_blank">醉卿枫の博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/data.github.io/tags/ROS/">ROS</a></div><div class="post_share"><div class="social-share" data-image="https://bu.dusays.com/2022/05/29/62939662553c9.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/data.github.io/post/15fa7048.html" title="ROS"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://bu.dusays.com/2022/06/05/629c5257753d1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-29</div><div class="title">ROS</div></div></a></div><div><a href="/data.github.io/post/93b2f74a.html" title="mavros"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://bu.dusays.com/2022/06/05/629c5257753d1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-09</div><div class="title">mavros</div></div></a></div><div><a href="/data.github.io/post/b7b02208.html" title="变结构无人机仿真"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://bu.dusays.com/2022/06/05/629c5257753d1.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-11</div><div class="title">变结构无人机仿真</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://wjlpicture.oss-cn-beijing.aliyuncs.com/img/12.png" onerror="this.onerror=null;this.src='/data.github.io/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">醉卿枫</div><div class="author-info__description">学习记录</div></div><div class="card-info-data site-data is-center"><a href="/data.github.io/archives/"><div class="headline">文章</div><div class="length-num">30</div></a><a href="/data.github.io/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/data.github.io/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><a id="card-info-btn" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A8%A1%E6%8B%9F%E5%8A%9B%E5%AD%A6%E4%BB%BF%E7%9C%9F%E8%AE%A1%E7%AE%97"><span class="toc-number">1.</span> <span class="toc-text">模拟力学仿真计算</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.1.</span> <span class="toc-text">操作步骤</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#soildworks%E5%AF%BC%E5%87%BAurdf"><span class="toc-number">2.</span> <span class="toc-text">soildworks导出urdf</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#urdf%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E8%AF%A6%E8%A7%A3"><span class="toc-number">2.1.</span> <span class="toc-text">urdf文件内容详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#urdf%E6%96%87%E4%BB%B6"><span class="toc-number">2.1.1.</span> <span class="toc-text">urdf文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0robot%E6%A0%87%E7%AD%BE"><span class="toc-number">2.1.1.1.</span> <span class="toc-text">添加robot标签</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8link%E6%A0%87%E7%AD%BE%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.1.1.2.</span> <span class="toc-text">使用link标签创建模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#joint%E6%A0%87%E7%AD%BE%E8%BF%9E%E6%8E%A5%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.1.1.3.</span> <span class="toc-text">joint标签连接模型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gazebo%E6%A0%87%E7%AD%BE"><span class="toc-number">2.1.2.</span> <span class="toc-text">gazebo标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sdf%E6%96%87%E4%BB%B6%E5%92%8Curdf%E5%92%8Cxacro%E6%96%87%E4%BB%B6%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">2.1.3.</span> <span class="toc-text">sdf文件和urdf和xacro文件的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gazebo%E8%AE%BE%E7%BD%AE"><span class="toc-number">2.2.</span> <span class="toc-text">gazebo设置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#xacro%E7%BC%96%E5%86%99"><span class="toc-number">3.</span> <span class="toc-text">xacro编写</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%86urdf%E6%A8%A1%E5%9E%8B%E6%96%87%E4%BB%B6%E5%8F%98%E6%9B%B4%E4%B8%BAxacro%E6%96%87%E4%BB%B6"><span class="toc-number">3.1.</span> <span class="toc-text">将urdf模型文件变更为xacro文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8xacro%E6%96%87%E4%BB%B6%E4%B8%AD%E8%BF%9B%E8%A1%8C%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE"><span class="toc-number">3.1.1.</span> <span class="toc-text">在xacro文件中进行相关配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BAjoint%E6%B7%BB%E5%8A%A0%E4%BC%A0%E5%8A%A8%E8%A3%85%E7%BD%AE"><span class="toc-number">3.1.1.1.</span> <span class="toc-text">为joint添加传动装置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0gazebo%E6%8E%A7%E5%88%B6%E5%99%A8%E6%8F%92%E4%BB%B6"><span class="toc-number">3.1.1.2.</span> <span class="toc-text">添加gazebo控制器插件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9display-launch%E5%8F%8Agazebo-launch%E6%96%87%E4%BB%B6"><span class="toc-number">3.1.1.3.</span> <span class="toc-text">修改display.launch及gazebo.launch文件</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/data.github.io/post/b7b02208.html" title="变结构无人机仿真"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://bu.dusays.com/2022/06/05/629c5257753d1.png" onerror="this.onerror=null;this.src='/data.github.io/img/404.jpg'" alt="变结构无人机仿真"/></a><div class="content"><a class="title" href="/data.github.io/post/b7b02208.html" title="变结构无人机仿真">变结构无人机仿真</a><time datetime="2023-11-10T16:00:00.000Z" title="发表于 2023-11-11 00:00:00">2023-11-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/data.github.io/post/5d3e3d8b.html" title="soildworks"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://bu.dusays.com/2022/05/29/62939662553c9.png" onerror="this.onerror=null;this.src='/data.github.io/img/404.jpg'" alt="soildworks"/></a><div class="content"><a class="title" href="/data.github.io/post/5d3e3d8b.html" title="soildworks">soildworks</a><time datetime="2023-10-27T13:01:00.000Z" title="发表于 2023-10-27 21:01:00">2023-10-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/data.github.io/post/93b2f74a.html" title="mavros"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://bu.dusays.com/2022/06/05/629c5257753d1.png" onerror="this.onerror=null;this.src='/data.github.io/img/404.jpg'" alt="mavros"/></a><div class="content"><a class="title" href="/data.github.io/post/93b2f74a.html" title="mavros">mavros</a><time datetime="2023-08-08T16:00:00.000Z" title="发表于 2023-08-09 00:00:00">2023-08-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/data.github.io/post/15fa7048.html" title="ROS"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://bu.dusays.com/2022/06/05/629c5257753d1.png" onerror="this.onerror=null;this.src='/data.github.io/img/404.jpg'" alt="ROS"/></a><div class="content"><a class="title" href="/data.github.io/post/15fa7048.html" title="ROS">ROS</a><time datetime="2023-07-28T16:00:00.000Z" title="发表于 2023-07-29 00:00:00">2023-07-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/data.github.io/post/c010a565.html" title="3.c++模板"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://bu.dusays.com/2022/05/29/62939662553c9.png" onerror="this.onerror=null;this.src='/data.github.io/img/404.jpg'" alt="3.c++模板"/></a><div class="content"><a class="title" href="/data.github.io/post/c010a565.html" title="3.c++模板">3.c++模板</a><time datetime="2023-07-09T13:03:00.000Z" title="发表于 2023-07-09 21:03:00">2023-07-09</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://bu.dusays.com/2022/05/29/62939662553c9.png')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By 醉卿枫</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/data.github.io/js/utils.js"></script><script src="/data.github.io/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/data.github.io/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/data.github.io/js/search/local-search.js"></script></div></div></body></html>
